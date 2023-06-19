@@ -29,4 +29,4 @@ The reason being, the 0.4 million file is the testing dataset, and the 3.6 milli
 
 ## TODO
 - Write a docker file for this project similiar to the prof's.
-- 
+- Define a range for what is considered positive, negative, or neutral
