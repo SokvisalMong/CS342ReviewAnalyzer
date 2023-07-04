@@ -16,14 +16,20 @@ def predict_sentiment(text):
 
     # Make a prediction using the trained model
     predicted_rating = model.predict(text_sequence)[0]
-    if np.argmax(predicted_rating) == 0:
+
+    negative_threshold = 0.4
+    positive_threshold = 0.6
+
+    if predicted_rating[0] >= negative_threshold and predicted_rating[1] <= positive_threshold:
+        return 'Neutral' + str(predicted_rating)
+    elif np.argmax(predicted_rating) == 0:
         return 'Negative' + str(predicted_rating)
     else:
         return 'Positive' + str(predicted_rating)
     
 if __name__ == "__main__":
     ## Replace this string here
-    text_input = "It was ok"
+    text_input = "It was amazing"
     
     predicted_sentiment = predict_sentiment(text_input)
     print(predicted_sentiment)
